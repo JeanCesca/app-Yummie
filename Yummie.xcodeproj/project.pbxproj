@@ -15,6 +15,15 @@
 		0F175BE628FDE64800051F24 /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F175BE528FDE64800051F24 /* OpeningViewController.swift */; };
 		0F175BE928FDED4900051F24 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F175BE828FDED4900051F24 /* OnboardingSlide.swift */; };
 		0F175BEC28FDEDDF00051F24 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F175BEB28FDEDDF00051F24 /* OnboardingCollectionViewCell.swift */; };
+		0F609DE228FF147500E08BB5 /* DishPortraitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F609DE128FF147500E08BB5 /* DishPortraitCollectionViewCell.swift */; };
+		0F609DE428FF231800E08BB5 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F609DE328FF231800E08BB5 /* Dish.swift */; };
+		0F9FAB0228FEF41A00394FBB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FAB0128FEF41A00394FBB /* Category.swift */; };
+		0F9FAB0428FEF44C00394FBB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FAB0328FEF44C00394FBB /* CategoryCollectionViewCell.swift */; };
+		0F9FAB0728FEF7EB00394FBB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FAB0628FEF7EB00394FBB /* String+Extension.swift */; };
+		0F9FAB0A28FEFA8500394FBB /* CategoryCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FAB0928FEFA8500394FBB /* CategoryCollectionViewTableViewCell.swift */; };
+		0F9FAB0C28FF04FE00394FBB /* DishPortraitCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FAB0B28FF04FE00394FBB /* DishPortraitCollectionViewTableViewCell.swift */; };
+		0F9FAB0F28FF06EF00394FBB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FAB0E28FF06EF00394FBB /* CardView.swift */; };
+		D47A9CC09AA727E325E81A41 /* Pods_Yummie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6466CD099A6895FE1F973BE /* Pods_Yummie.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +37,17 @@
 		0F175BE528FDE64800051F24 /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		0F175BE828FDED4900051F24 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		0F175BEB28FDEDDF00051F24 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F609DE128FF147500E08BB5 /* DishPortraitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishPortraitCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F609DE328FF231800E08BB5 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		0F9FAB0128FEF41A00394FBB /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0F9FAB0328FEF44C00394FBB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F9FAB0628FEF7EB00394FBB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		0F9FAB0928FEFA8500394FBB /* CategoryCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		0F9FAB0B28FF04FE00394FBB /* DishPortraitCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishPortraitCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		0F9FAB0E28FF06EF00394FBB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		44D2D7E44C46D08A5330C58F /* Pods-Yummie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yummie.release.xcconfig"; path = "Target Support Files/Pods-Yummie/Pods-Yummie.release.xcconfig"; sourceTree = "<group>"; };
+		BFA4DF2B3EA7E4A8A130BC75 /* Pods-Yummie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yummie.debug.xcconfig"; path = "Target Support Files/Pods-Yummie/Pods-Yummie.debug.xcconfig"; sourceTree = "<group>"; };
+		C6466CD099A6895FE1F973BE /* Pods_Yummie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yummie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +55,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47A9CC09AA727E325E81A41 /* Pods_Yummie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B4B062E97A546819D719B90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BFA4DF2B3EA7E4A8A130BC75 /* Pods-Yummie.debug.xcconfig */,
+				44D2D7E44C46D08A5330C58F /* Pods-Yummie.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		0F175BC328FDE2DD00051F24 = {
 			isa = PBXGroup;
 			children = (
 				0F175BCE28FDE2DD00051F24 /* Yummie */,
 				0F175BCD28FDE2DD00051F24 /* Products */,
+				0B4B062E97A546819D719B90 /* Pods */,
+				4098F0D63A221DC22264CD98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,12 +92,11 @@
 		0F175BCE28FDE2DD00051F24 /* Yummie */ = {
 			isa = PBXGroup;
 			children = (
-				0F175BE728FDED3A00051F24 /* Models */,
-				0F175BCF28FDE2DD00051F24 /* AppDelegate.swift */,
-				0F175BEA28FDEDBA00051F24 /* Onboarding */,
+				0F9FAB0528FEF7D900394FBB /* Extensions */,
 				0F175BD128FDE2DD00051F24 /* SceneDelegate.swift */,
-				0F175BD328FDE2DD00051F24 /* HomeViewController.swift */,
-				0F175BE528FDE64800051F24 /* OpeningViewController.swift */,
+				0F175BCF28FDE2DD00051F24 /* AppDelegate.swift */,
+				0F175BE728FDED3A00051F24 /* Models */,
+				0F469D8B28FEE042000216F4 /* Views */,
 				0F175BDD28FDE2DE00051F24 /* Info.plist */,
 				0F175BD828FDE2DE00051F24 /* Assets.xcassets */,
 			);
@@ -76,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				0F175BE828FDED4900051F24 /* OnboardingSlide.swift */,
+				0F9FAB0128FEF41A00394FBB /* Category.swift */,
+				0F609DE328FF231800E08BB5 /* Dish.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -89,6 +122,77 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		0F469D8B28FEE042000216F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F9FAB0D28FF06E100394FBB /* CardView */,
+				0F469D8D28FEE059000216F4 /* Opening */,
+				0F175BEA28FDEDBA00051F24 /* Onboarding */,
+				0F469D8C28FEE04A000216F4 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0F469D8C28FEE04A000216F4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0F175BD328FDE2DD00051F24 /* HomeViewController.swift */,
+				0F9FAB1128FF0EE100394FBB /* DishPortraitCollectionView */,
+				0F9FAB0828FEFA6B00394FBB /* CategoryCollectionView */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0F469D8D28FEE059000216F4 /* Opening */ = {
+			isa = PBXGroup;
+			children = (
+				0F175BE528FDE64800051F24 /* OpeningViewController.swift */,
+			);
+			path = Opening;
+			sourceTree = "<group>";
+		};
+		0F9FAB0528FEF7D900394FBB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F9FAB0628FEF7EB00394FBB /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0F9FAB0828FEFA6B00394FBB /* CategoryCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0F9FAB0928FEFA8500394FBB /* CategoryCollectionViewTableViewCell.swift */,
+				0F9FAB0328FEF44C00394FBB /* CategoryCollectionViewCell.swift */,
+			);
+			path = CategoryCollectionView;
+			sourceTree = "<group>";
+		};
+		0F9FAB0D28FF06E100394FBB /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				0F9FAB0E28FF06EF00394FBB /* CardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		0F9FAB1128FF0EE100394FBB /* DishPortraitCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0F9FAB0B28FF04FE00394FBB /* DishPortraitCollectionViewTableViewCell.swift */,
+				0F609DE128FF147500E08BB5 /* DishPortraitCollectionViewCell.swift */,
+			);
+			path = DishPortraitCollectionView;
+			sourceTree = "<group>";
+		};
+		4098F0D63A221DC22264CD98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6466CD099A6895FE1F973BE /* Pods_Yummie.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +200,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F175BE028FDE2DE00051F24 /* Build configuration list for PBXNativeTarget "Yummie" */;
 			buildPhases = (
+				A1B95043E36EC83016850459 /* [CP] Check Pods Manifest.lock */,
 				0F175BC828FDE2DD00051F24 /* Sources */,
 				0F175BC928FDE2DD00051F24 /* Frameworks */,
 				0F175BCA28FDE2DD00051F24 /* Resources */,
+				D8731E5376E31EF3B785E6A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,17 +259,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A1B95043E36EC83016850459 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yummie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8731E5376E31EF3B785E6A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yummie/Pods-Yummie-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yummie/Pods-Yummie-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yummie/Pods-Yummie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0F175BC828FDE2DD00051F24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9FAB0428FEF44C00394FBB /* CategoryCollectionViewCell.swift in Sources */,
+				0F9FAB0728FEF7EB00394FBB /* String+Extension.swift in Sources */,
 				0F175BD428FDE2DD00051F24 /* HomeViewController.swift in Sources */,
 				0F175BE628FDE64800051F24 /* OpeningViewController.swift in Sources */,
 				0F175BD028FDE2DD00051F24 /* AppDelegate.swift in Sources */,
+				0F9FAB0C28FF04FE00394FBB /* DishPortraitCollectionViewTableViewCell.swift in Sources */,
+				0F609DE428FF231800E08BB5 /* Dish.swift in Sources */,
 				0F175BD228FDE2DD00051F24 /* SceneDelegate.swift in Sources */,
+				0F609DE228FF147500E08BB5 /* DishPortraitCollectionViewCell.swift in Sources */,
+				0F9FAB0F28FF06EF00394FBB /* CardView.swift in Sources */,
 				0F175BE928FDED4900051F24 /* OnboardingSlide.swift in Sources */,
 				0F175BEC28FDEDDF00051F24 /* OnboardingCollectionViewCell.swift in Sources */,
+				0F9FAB0228FEF41A00394FBB /* Category.swift in Sources */,
+				0F9FAB0A28FEFA8500394FBB /* CategoryCollectionViewTableViewCell.swift in Sources */,
 				0F175BE428FDE62500051F24 /* OnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +443,7 @@
 		};
 		0F175BE128FDE2DE00051F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFA4DF2B3EA7E4A8A130BC75 /* Pods-Yummie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -314,6 +471,7 @@
 		};
 		0F175BE228FDE2DE00051F24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44D2D7E44C46D08A5330C58F /* Pods-Yummie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

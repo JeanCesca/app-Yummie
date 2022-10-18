@@ -9,23 +9,6 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
     
-    private var currentPage: Int = 0 {
-        didSet {
-            pageControl.currentPage = currentPage
-            if currentPage == slides.count - 1 {
-                nextButton.setTitle("Get Started", for: .normal)
-            } else {
-                nextButton.setTitle("Next", for: .normal)
-            }
-        }
-    }
-    
-    private var slides: [OnboardingSlide] = [
-        OnboardingSlide(title: "Delicious Dishes", description: "Experience a variety of amazing dishes from different cultures.", image: UIImage(named: "slide1")!),
-        OnboardingSlide(title: "World-Class Chefs", description: "Our dishes are prepared by only the best.", image: UIImage(named: "slide2")!),
-        OnboardingSlide(title: "Instant World-Wide Delivery", description: "Your orders will be delivered instantly irrespective of your location around the world.", image: UIImage(named: "slide3")!),
-    ]
-    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -33,7 +16,6 @@ class OnboardingViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.id)
-//        cv.isPagingEnabled = false
         cv.showsHorizontalScrollIndicator = false
         cv.automaticallyAdjustsScrollIndicatorInsets = true
         return cv
@@ -61,6 +43,34 @@ class OnboardingViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
+    
+    private var currentPage: Int = 0 {
+        didSet {
+            pageControl.currentPage = currentPage
+            if currentPage == slides.count - 1 {
+                nextButton.setTitle("Get Started", for: .normal)
+            } else {
+                nextButton.setTitle("Next", for: .normal)
+            }
+        }
+    }
+    
+    private var slides: [OnboardingSlide] = [
+        OnboardingSlide(
+            title: "Delicious Dishes",
+            description: "Experience a variety of amazing dishes from different cultures.",
+            image: UIImage(named: "slide1")!),
+        
+        OnboardingSlide(
+            title: "World-Class Chefs",
+            description: "Our dishes are prepared by only the best.",
+            image: UIImage(named: "slide2")!),
+        
+        OnboardingSlide(
+            title: "Instant World-Wide Delivery",
+            description: "Your orders will be delivered instantly irrespective of your location around the world.",
+            image: UIImage(named: "slide3")!),
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +79,8 @@ class OnboardingViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        pageControl.numberOfPages = slides.count
         
         view.addSubview(collectionView)
         view.addSubview(pageControl)
