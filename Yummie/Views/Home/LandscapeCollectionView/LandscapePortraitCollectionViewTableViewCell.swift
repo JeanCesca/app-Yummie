@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol LandscapePortraitCollectionViewTableViewCellProtocol: AnyObject {
-    func didSelectedLandscapeCell()
+    func didSelectedLandscapeCell(with model: Dish)
 }
 
 class LandscapePortraitCollectionViewTableViewCell: UITableViewCell {
@@ -21,11 +21,10 @@ class LandscapePortraitCollectionViewTableViewCell: UITableViewCell {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 380, height: 140)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(LandscapePortraitCollectionViewCell.self, forCellWithReuseIdentifier: LandscapePortraitCollectionViewCell.id)
-        collectionView.backgroundColor = .systemGray4
         return collectionView
     }()
     
@@ -40,7 +39,6 @@ class LandscapePortraitCollectionViewTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .systemPink
         contentView.addSubview(collectionView)
 
         collectionView.delegate = self
@@ -57,7 +55,7 @@ class LandscapePortraitCollectionViewTableViewCell: UITableViewCell {
     }
 }
 
-extension LandscapePortraitCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension LandscapePortraitCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dishes.count
@@ -68,17 +66,27 @@ extension LandscapePortraitCollectionViewTableViewCell: UICollectionViewDelegate
         
         let model = dishes[indexPath.row]
         cell.setup(model)
-        
-        cell.layer.cornerRadius = 10
-        cell.layer.shadowOpacity = 0.1
-        cell.layer.shadowOffset = .zero
-        cell.layer.shadowRadius = 10
-        cell.layer.masksToBounds = true
-        
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.didSelectedLandscapeCell()
+        collectionView.deselectItem(at: indexPath, animated: true)
+
+        let model = dishes[indexPath.row]
+        self.delegate?.didSelectedLandscapeCell(with: model)
     }
 }
+
+extension LandscapePortraitCollectionViewTableViewCell: UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.frame.width / 1.2, height: 140)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 15
+        }
+}
+
+

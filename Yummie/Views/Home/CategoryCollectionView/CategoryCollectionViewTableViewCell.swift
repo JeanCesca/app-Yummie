@@ -8,36 +8,39 @@
 import Foundation
 import UIKit
 
+protocol CategoryCollectionViewTableViewCellProtocol: AnyObject {
+    func didSelectedCategoryCell(with model: Category)
+}
 
 class CategoryCollectionViewTableViewCell: UITableViewCell {
         
-    static let id = "CollectionViewTableViewCell"
+    static let id = "CategoryCollectionViewTableViewCell"
+    
+    weak var delegate: CategoryCollectionViewTableViewCellProtocol?
         
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 220, height: 100)
-        
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.id)
-        collectionView.backgroundColor = .systemGray4
         return collectionView
     }()
     
     private var categories: [Category] = [
-        Category(id: "ID1", name: "Africa", image: "https://picsum.photos/100/200"),
-        Category(id: "ID1", name: "Africa", image: "https://picsum.photos/100/200"),
-        Category(id: "ID1", name: "Africa", image: "https://picsum.photos/100/200"),
-        Category(id: "ID1", name: "Africa", image: "https://picsum.photos/100/200"),
-        Category(id: "ID1", name: "Africa", image: "https://picsum.photos/100/200"),
+        Category(id: "ID1", name: "Africa 1", image: "https://picsum.photos/100/200"),
+        Category(id: "ID1", name: "Africa 2", image: "https://picsum.photos/100/200"),
+        Category(id: "ID1", name: "Africa 3", image: "https://picsum.photos/100/200"),
+        Category(id: "ID1", name: "Africa 4", image: "https://picsum.photos/100/200"),
+        Category(id: "ID1", name: "Africa 5", image: "https://picsum.photos/100/200"),
     ]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .systemPink
         contentView.addSubview(collectionView)
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -49,11 +52,11 @@ class CategoryCollectionViewTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
+        
     }
-    
 }
 
-extension CategoryCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CategoryCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
@@ -65,13 +68,25 @@ extension CategoryCollectionViewTableViewCell: UICollectionViewDelegate, UIColle
         let model = categories[indexPath.row]
         cell.setup(model)
         
-        cell.layer.cornerRadius = 10
-        cell.layer.shadowOpacity = 0.1
-        cell.layer.shadowOffset = .zero
-        cell.layer.shadowRadius = 10
-        cell.layer.masksToBounds = true
-        
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let model = categories[indexPath.row]
+        self.delegate?.didSelectedCategoryCell(with: model)
+    }
+}
+
+extension CategoryCollectionViewTableViewCell: UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.frame.width / 2, height: 100)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 15
+        }
 }
 

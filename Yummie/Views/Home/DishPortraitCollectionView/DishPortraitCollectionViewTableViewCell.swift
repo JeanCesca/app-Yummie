@@ -21,9 +21,9 @@ class DishPortraitCollectionViewTableViewCell: UITableViewCell {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 220, height: 320)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(DishPortraitCollectionViewCell.self, forCellWithReuseIdentifier: DishPortraitCollectionViewCell.id)
         return collectionView
     }()
@@ -39,7 +39,6 @@ class DishPortraitCollectionViewTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .systemGray3
         contentView.addSubview(collectionView)
         
         collectionView.delegate = self
@@ -56,7 +55,7 @@ class DishPortraitCollectionViewTableViewCell: UITableViewCell {
     }
 }
 
-extension DishPortraitCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension DishPortraitCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dishes.count
@@ -65,9 +64,6 @@ extension DishPortraitCollectionViewTableViewCell: UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishPortraitCollectionViewCell.id, for: indexPath) as! DishPortraitCollectionViewCell
         
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
-        
         let model = dishes[indexPath.row]
         cell.setup(model)
         
@@ -75,8 +71,20 @@ extension DishPortraitCollectionViewTableViewCell: UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        collectionView.deselectItem(at: indexPath, animated: true)
+
         let model = dishes[indexPath.row]
         self.delegate?.didSelectedDishCell(with: model)
     }
+}
+
+extension DishPortraitCollectionViewTableViewCell: UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.frame.width / 2, height: 320)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 15
+        }
 }

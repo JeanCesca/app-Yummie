@@ -37,6 +37,7 @@ class LandscapePortraitCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.text = "Label"
         label.textColor = .black
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
     }()
@@ -56,13 +57,16 @@ class LandscapePortraitCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "Label"
-        label.textColor = .systemPink
+        label.textColor = .black
         label.numberOfLines = 0
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        contentView.backgroundColor = .systemBackground
+        contentView.applyShadow(cornerRadius: 10)
         
         contentView.addSubview(landscapeImageView)
         contentView.addSubview(stackView)
@@ -91,8 +95,6 @@ class LandscapePortraitCollectionViewCell: UICollectionViewCell {
             landscapeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             landscapeImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             landscapeImageView.widthAnchor.constraint(equalToConstant: 100),
-//            landscapeImageView.heightAnchor.constraint(equalToConstant: 100),
-
             
             stackView.leadingAnchor.constraint(equalTo: landscapeImageView.trailingAnchor, constant: 20),
             stackView.topAnchor.constraint(equalTo: landscapeImageView.topAnchor),

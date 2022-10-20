@@ -26,7 +26,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     lazy var categoryTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.text = "Entrega rápida na porta da sua casa"
         label.textColor = .black
         label.numberOfLines = 0
@@ -41,7 +41,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         configureConstraints()
         
         contentView.backgroundColor = .systemBackground
-
+        contentView.applyShadow(cornerRadius: 10)
     }
     
     required init?(coder: NSCoder) {
@@ -50,15 +50,15 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     public func setup(_ category: Category) {
         categoryTitleLabel.text = category.name
-        categoryImageView.kf.setImage(with: category.image.asURL)
+        categoryImageView.kf.setImage(with: category.image?.asURL)
     }
     
     private func configureConstraints() {
         NSLayoutConstraint.activate([
             categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            categoryImageView.trailingAnchor.constraint(equalTo: categoryTitleLabel.leadingAnchor, constant: -20),
-            categoryImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            categoryImageView.widthAnchor.constraint(equalToConstant: 60),
             
             categoryTitleLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 20),
             categoryTitleLabel.centerYAnchor.constraint(equalTo: categoryImageView.centerYAnchor),

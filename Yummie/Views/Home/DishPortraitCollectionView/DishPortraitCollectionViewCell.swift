@@ -16,7 +16,7 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
     lazy var dishTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.text = "Label"
         label.textColor = .black
         label.textAlignment = .center
@@ -39,7 +39,7 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "Label"
-        label.textColor = .systemPink
+        label.textColor = .black
         label.numberOfLines = 0
         return label
     }()
@@ -49,7 +49,7 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "Label"
-        label.textColor = .systemGray3
+        label.textColor = .systemGray
         label.numberOfLines = 0
         return label
     }()
@@ -57,13 +57,14 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        contentView.backgroundColor = .systemBackground
+        contentView.applyShadow(cornerRadius: 10)
+        
         contentView.addSubview(dishTitleLabel)
         contentView.addSubview(dishImageView)
         contentView.addSubview(caloriesLabel)
         contentView.addSubview(descriptionLabel)
         configureConstraints()
-        
-        contentView.backgroundColor = .systemOrange
     }
     
     required init?(coder: NSCoder) {

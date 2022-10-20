@@ -14,13 +14,14 @@ enum Sections: Int {
 }
 
 class HomeViewController: UIViewController {
-        
+            
     lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(CategoryCollectionViewTableViewCell.self, forCellReuseIdentifier: CategoryCollectionViewTableViewCell.id)
         table.register(DishPortraitCollectionViewTableViewCell.self, forCellReuseIdentifier: DishPortraitCollectionViewTableViewCell.id)
         table.register(LandscapePortraitCollectionViewTableViewCell.self, forCellReuseIdentifier: LandscapePortraitCollectionViewTableViewCell.id)
+        table.separatorColor = .clear
         return table
     }()
     
@@ -80,13 +81,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
             
         case Sections.Category.rawValue:
-            return 100
+            return 130
             
         case Sections.Dish.rawValue:
-            return 320
+            return 350
             
         case Sections.Landscape.rawValue:
-            return 140
+            return 170
             
         default:
             return 140
@@ -100,6 +101,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case Sections.Category.rawValue:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CategoryCollectionViewTableViewCell.id, for: indexPath) as! CategoryCollectionViewTableViewCell
+            
+            cell.delegate = self
             
             return cell
             
@@ -122,7 +125,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        
     }
 }
 
@@ -130,6 +132,25 @@ extension HomeViewController {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
+
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = .systemFont(ofSize: 22, weight: .bold)
+        header.textLabel?.textColor = .black        
+    }
+}
+
+extension HomeViewController: CategoryCollectionViewTableViewCellProtocol {
+    func didSelectedCategoryCell(with model: Category) {
+        DispatchQueue.main.async {
+            
+            let vc = DishListViewController()
+            vc.title = model.name
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -138,7 +159,8 @@ extension HomeViewController: DishPortraitCollectionViewTableViewCellProtocol {
         DispatchQueue.main.async {
             
             let vc = FullDetailViewController()
-            
+            vc.title = model.name
+
             let viewModel = FullDetailViewModel(withModel: model)
             vc.configureView(with: viewModel)
             
@@ -147,13 +169,17 @@ extension HomeViewController: DishPortraitCollectionViewTableViewCellProtocol {
     }
 }
 
-
 extension HomeViewController: LandscapePortraitCollectionViewTableViewCellProtocol {
-    func didSelectedLandscapeCell() {
+    
+    func didSelectedLandscapeCell(with model: Dish) {
         DispatchQueue.main.async {
             
             let vc = FullDetailViewController()
-            //            vc.configureView(with: landscapeModel)
+            vc.title = model.name
+            
+            let viewModel = FullDetailViewModel(withModel: model)
+            vc.configureView(with: viewModel)
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

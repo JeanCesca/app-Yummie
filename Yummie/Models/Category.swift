@@ -8,7 +8,7 @@
 import Foundation
 
 struct Category {
-    let id: String
-    let name: String
-    let image: String
+    let id: String?
+    let name: String?
+    let image: String?
 }
