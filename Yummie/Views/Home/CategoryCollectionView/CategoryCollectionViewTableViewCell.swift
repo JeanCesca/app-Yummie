@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
+
 class CategoryCollectionViewTableViewCell: UITableViewCell {
-    
+        
     static let id = "CollectionViewTableViewCell"
-    
+        
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -49,6 +50,7 @@ class CategoryCollectionViewTableViewCell: UITableViewCell {
         super.layoutSubviews()
         collectionView.frame = contentView.bounds
     }
+    
 }
 
 extension CategoryCollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -63,7 +65,10 @@ extension CategoryCollectionViewTableViewCell: UICollectionViewDelegate, UIColle
         let model = categories[indexPath.row]
         cell.setup(model)
         
-        cell.layer.cornerRadius = 15
+        cell.layer.cornerRadius = 10
+        cell.layer.shadowOpacity = 0.1
+        cell.layer.shadowOffset = .zero
+        cell.layer.shadowRadius = 10
         cell.layer.masksToBounds = true
         
         return cell

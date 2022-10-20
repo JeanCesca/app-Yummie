@@ -8,17 +8,10 @@
 import UIKit
 
 enum Sections: Int {
-    case FoodCategory = 0
-    case PopularDishes = 1
-    case ChefsSpecial = 2
+    case Category = 0
+    case Dish = 1
+    case Landscape = 2
 }
-
-enum SectionsHeight: Int {
-    case FoodCategory = 0
-    case PopularDishes = 1
-    case ChefsSpecial = 2
-}
-
 
 class HomeViewController: UIViewController {
         
@@ -27,6 +20,7 @@ class HomeViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(CategoryCollectionViewTableViewCell.self, forCellReuseIdentifier: CategoryCollectionViewTableViewCell.id)
         table.register(DishPortraitCollectionViewTableViewCell.self, forCellReuseIdentifier: DishPortraitCollectionViewTableViewCell.id)
+        table.register(LandscapePortraitCollectionViewTableViewCell.self, forCellReuseIdentifier: LandscapePortraitCollectionViewTableViewCell.id)
         return table
     }()
     
@@ -85,17 +79,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
             
-        case Sections.FoodCategory.rawValue:
-            return 150
+        case Sections.Category.rawValue:
+            return 100
             
-        case Sections.PopularDishes.rawValue:
-            return 300
+        case Sections.Dish.rawValue:
+            return 320
             
-        case Sections.ChefsSpecial.rawValue:
-            return 150
+        case Sections.Landscape.rawValue:
+            return 140
             
         default:
-            return 150
+            return 140
         }
     }
     
@@ -103,24 +97,32 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
             
-        case Sections.FoodCategory.rawValue:
+        case Sections.Category.rawValue:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: CategoryCollectionViewTableViewCell.id, for: indexPath) as! CategoryCollectionViewTableViewCell
+            
             return cell
             
-        case Sections.PopularDishes.rawValue:
+        case Sections.Dish.rawValue:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: DishPortraitCollectionViewTableViewCell.id, for: indexPath) as! DishPortraitCollectionViewTableViewCell
+            
+            cell.delegate = self
+            
             return cell
             
-        case Sections.ChefsSpecial.rawValue:
+        case Sections.Landscape.rawValue:
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: CategoryCollectionViewTableViewCell.id, for: indexPath) as! CategoryCollectionViewTableViewCell
+                withIdentifier: LandscapePortraitCollectionViewTableViewCell.id, for: indexPath) as! LandscapePortraitCollectionViewTableViewCell
+            
+            cell.delegate = self
+            
             return cell
             
         default:
             return UITableViewCell()
         }
+        
     }
 }
 
@@ -130,4 +132,33 @@ extension HomeViewController {
         return sections[section]
     }
 }
+
+extension HomeViewController: DishPortraitCollectionViewTableViewCellProtocol {
+    func didSelectedDishCell(with model: Dish) {
+        DispatchQueue.main.async {
+            
+            let vc = FullDetailViewController()
+            
+            let viewModel = FullDetailViewModel(withModel: model)
+            vc.configureView(with: viewModel)
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+
+extension HomeViewController: LandscapePortraitCollectionViewTableViewCellProtocol {
+    func didSelectedLandscapeCell() {
+        DispatchQueue.main.async {
+            
+            let vc = FullDetailViewController()
+            //            vc.configureView(with: landscapeModel)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+
+
 

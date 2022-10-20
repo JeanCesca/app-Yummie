@@ -1,13 +1,13 @@
 //
-//  Dish.swift
+//  Landscape.swift
 //  Yummie
 //
-//  Created by Jean Ricardo Cesca on 18/10/22.
+//  Created by Jean Ricardo Cesca on 19/10/22.
 //
 
 import Foundation
 
-struct Dish {
+struct Landscape {
     
     let id: String?
     let name: String?

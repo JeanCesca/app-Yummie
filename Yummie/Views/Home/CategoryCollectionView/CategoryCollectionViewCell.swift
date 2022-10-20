@@ -26,7 +26,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     lazy var categoryTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         label.text = "Entrega rápida na porta da sua casa"
         label.textColor = .black
         label.numberOfLines = 0

@@ -16,9 +16,10 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
     lazy var dishTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.text = "Entrega rápida na porta da sua casa"
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.text = "Label"
         label.textColor = .black
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
@@ -29,15 +30,16 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.image = UIImage(systemName: "person.fill")
         image.clipsToBounds = true
+        image.layer.cornerRadius = 10
         return image
     }()
     
     lazy var caloriesLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.text = "Entrega rápida na porta da sua casa"
-        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.text = "Label"
+        label.textColor = .systemPink
         label.numberOfLines = 0
         return label
     }()
@@ -45,9 +47,9 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.text = "Entrega rápida na porta da sua casa"
-        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.text = "Label"
+        label.textColor = .systemGray3
         label.numberOfLines = 0
         return label
     }()
@@ -70,21 +72,30 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
     
     public func setup(_ dish: Dish) {
         dishTitleLabel.text = dish.name
-//        dishImageView.kf.setImage(with: dish.image?.asURL)
-        caloriesLabel.text = dish.formattedCalories
+        dishImageView.kf.setImage(with: dish.image?.asURL)
+        caloriesLabel.text = (dish.formattedCalories)
         descriptionLabel.text = dish.description
-        
     }
     
     private func configureConstraints() {
         NSLayoutConstraint.activate([
-            dishImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            dishImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            dishImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            dishTitleLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 20),
-            dishTitleLabel.centerYAnchor.constraint(equalTo: dishImageView.centerYAnchor),
-            dishTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            dishTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            dishTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+//            dishTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            
+            dishImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            dishImageView.topAnchor.constraint(equalTo: dishTitleLabel.bottomAnchor),
+            dishImageView.widthAnchor.constraint(equalToConstant: contentView.frame.width - 40),
+            dishImageView.heightAnchor.constraint(equalToConstant: 200),
+
+            caloriesLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 10),
+            caloriesLabel.leadingAnchor.constraint(equalTo: dishImageView.leadingAnchor),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: caloriesLabel.bottomAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: caloriesLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
     }
 }
