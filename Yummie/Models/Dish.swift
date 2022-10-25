@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Dish {
-    
+struct Dish: Codable {
     let id: String?
     let name: String?
     let description: String?
@@ -16,7 +15,6 @@ struct Dish {
     let calories: Double?
     
     var formattedCalories: String {
-        return String(format: "%2f calories", calories ?? 0)
+        return String(format: "%.2f calories", calories ?? 0)
     }
-    
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Category {
+struct Category: Codable {
     let id: String?
-    let name: String?
+    let title: String?
     let image: String?
 }
