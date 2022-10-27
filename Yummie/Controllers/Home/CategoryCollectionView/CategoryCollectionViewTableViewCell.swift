@@ -85,9 +85,6 @@ extension CategoryCollectionViewTableViewCell: UICollectionViewDelegate, UIColle
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let model = categories[indexPath.row]
-        
-        let id = categories[indexPath.row].id
-        
         self.delegate?.didSelectedCategoryCell(with: model)
     }
 }

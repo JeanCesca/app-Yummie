@@ -11,8 +11,8 @@ import ProgressHUD
 
 class FullDetailViewController: UIViewController {
     
-    let viewModel = FullDetailViewModel()
-                
+    var model: FullDetailViewModel!
+    
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -110,7 +110,6 @@ class FullDetailViewController: UIViewController {
         verticalStackView.addArrangedSubview(textField)
         verticalStackView.addArrangedSubview(orderButton)
 
-        
         configureConstraints()
         actions()
     }
@@ -120,14 +119,34 @@ class FullDetailViewController: UIViewController {
     }
     
     @objc private func didTapOrderButton() {
-        viewModel.networkService(with: textField)
+        networkService()
     }
     
+    func networkService() {
+        guard let name = textField.text?.trimmingCharacters(in: .whitespaces),
+              !name.isEmpty
+        else {
+            ProgressHUD.showError("Please enter your name!")
+            return }
+                
+        ProgressHUD.show("Placing Order...")
+        APICaller.shared.placeOrder(dishID: model.id, name: name) { result in
+            switch result {
+            case .success(_):
+                ProgressHUD.showSuccess("Sucesso")
+            case .failure(let error):
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
+    }
+        
     public func configureView(with viewModel: FullDetailViewModel) {
         imageView.kf.setImage(with: viewModel.image.asURL)
         titleLabel.text = viewModel.name
         caloriesLabel.text = viewModel.calories
         descriptionLabel.text = viewModel.description
+        
+        self.model = viewModel
     }
     
     private func configureConstraints() {

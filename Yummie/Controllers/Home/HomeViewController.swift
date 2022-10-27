@@ -14,14 +14,8 @@ enum Sections: Int {
     case Landscape = 2
 }
 
-protocol HomeViewControllerProtocol: AnyObject {
-    func didUpdateDishList()
-}
-
 class HomeViewController: UIViewController {
-    
-    weak var delegate: HomeViewControllerProtocol?
-                
+                    
     lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -40,17 +34,19 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Yummie"
-        
-        view.backgroundColor = .systemBackground
         
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         
+        setupView()
         setupItems()
         configureConstraints()
+    }
+    
+    private func setupView() {
+        title = "Yummie"
+        view.backgroundColor = .systemBackground
     }
     
     private func setupItems() {
@@ -131,7 +127,6 @@ extension HomeViewController {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
-
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -174,8 +169,6 @@ extension HomeViewController: DishPortraitCollectionViewTableViewCellProtocol {
 
             let viewModel = FullDetailViewModel(withModel: model)
             vc.configureView(with: viewModel)
-            
-            
             
             self.navigationController?.pushViewController(vc, animated: true)
         }

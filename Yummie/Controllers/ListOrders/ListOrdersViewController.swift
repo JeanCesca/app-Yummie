@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ProgressHUD
 
 class ListOrdersViewController: UIViewController {
     
@@ -17,7 +18,6 @@ class ListOrdersViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(DishListTableViewCell.self, forCellReuseIdentifier: DishListTableViewCell.id)
         table.separatorColor = .clear
-        table.backgroundColor = .red
         return table
     }()
     
@@ -29,6 +29,25 @@ class ListOrdersViewController: UIViewController {
         tableView.dataSource = self
         
         configureConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ProgressHUD.show()
+        fetchOrder()
+    }
+    
+    private func fetchOrder() {
+        APICaller.shared.fetchOrders { [weak self] result in
+            switch result {
+            case .success(let orders):
+                ProgressHUD.dismiss()
+                self?.orders = orders
+                self?.tableView.reloadData()
+            case .failure(let error):
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
     }
     
     private func configureConstraints() {

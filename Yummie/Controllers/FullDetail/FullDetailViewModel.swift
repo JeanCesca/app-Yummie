@@ -13,16 +13,7 @@ class FullDetailViewModel {
     var model: Dish
     
     init(withModel model: Dish? = nil) {
-        
-        let optionalDish = Dish(
-            id: "",
-            name: "",
-            description: "",
-            image: "",
-            calories: 0
-        )
-        
-        self.model = model ?? optionalDish
+        self.model = model ?? Dish(id: "", name: "", description: "", image: "", calories: 0)
     }
     
     var id: String {
@@ -43,24 +34,5 @@ class FullDetailViewModel {
     
     var calories: String {
         return String(format: "%.2f calories", model.calories ?? 0.0)
-    }
-    
-    func networkService(with textField: UITextField) {
-        guard let name = textField.text?.trimmingCharacters(in: .whitespaces),
-              !name.isEmpty
-        else {
-            ProgressHUD.showError("Please enter your name!")
-            return }
-        
-        ProgressHUD.show("Placing Order...")
-        
-        APICaller.shared.placeOrder(dishID: id, name: name) { result in
-            switch result {
-            case .success(_):
-                ProgressHUD.showSuccess("Sucesso")
-            case .failure(let error):
-                ProgressHUD.showError(error.localizedDescription)
-            }
-        }
     }
 }

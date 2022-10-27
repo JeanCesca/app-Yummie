@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 import Kingfisher
 
+
 class DishPortraitCollectionViewCell: UICollectionViewCell {
-    
+        
     static let id = "DishPortraitCollectionViewCell"
     
     lazy var dishTitleLabel: UILabel = {
@@ -83,7 +84,6 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
             
             dishTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             dishTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-//            dishTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
             
             dishImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             dishImageView.topAnchor.constraint(equalTo: dishTitleLabel.bottomAnchor, constant: 10),

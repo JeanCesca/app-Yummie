@@ -32,16 +32,19 @@ class DishListViewModel {
         return model.description ?? String.emptyString
     }
     
-//    private func networkService(with model: Dish) {
-//        ProgressHUD.show()
-//        APICaller.shared.fetchDishList(categoryID: id) { [weak self] result in
-//            switch result {
-//            case .success(let dishList):
-//                ProgressHUD.dismiss()
-//                self?.model = dishList
-//            case .failure(let error):
-//                ProgressHUD.showError(error.localizedDescription)
-//            }
-//        }
-//    }
+    private func networkService(with model: Dish) {
+        ProgressHUD.show()
+        APICaller.shared.fetchDishList(categoryID: id) { [weak self] result in
+            switch result {
+            case .success(let dishList):
+                ProgressHUD.dismiss()
+                for dish in dishList {
+                    let dish = Dish(id: dish.id, name: dish.name, description: dish.description, image: dish.image, calories: dish.calories)
+                    self?.model = dish
+                }
+            case .failure(let error):
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
+    }
 }
