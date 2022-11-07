@@ -99,6 +99,7 @@ class OnboardingViewController: UIViewController {
         if currentPage == slides.count - 1 {
             let vc = UINavigationController(rootViewController: HomeViewController())
             vc.modalPresentationStyle = .fullScreen
+            UserDefaults.standard.hasOnboarded = true
             present(vc, animated: true)
         } else {
             currentPage += 1

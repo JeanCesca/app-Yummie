@@ -80,7 +80,4 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
 //            slideSmallLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-    
-    
-    
 }

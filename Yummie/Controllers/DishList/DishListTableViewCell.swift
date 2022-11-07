@@ -51,7 +51,7 @@ class DishListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.applyShadow(cornerRadius: 10)
-
+        
         contentView.addSubview(dishImageView)
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(titleLabel)
@@ -91,7 +91,4 @@ class DishListTableViewCell: UITableViewCell {
             descriptionLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         ])
     }
-    
-    
-    
 }

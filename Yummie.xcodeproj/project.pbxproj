@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F09CEC229193E90004A0423 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F09CEC129193E90004A0423 /* UserDefaults+.swift */; };
 		0F175BD028FDE2DD00051F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F175BCF28FDE2DD00051F24 /* AppDelegate.swift */; };
 		0F175BD228FDE2DD00051F24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F175BD128FDE2DD00051F24 /* SceneDelegate.swift */; };
 		0F175BD428FDE2DD00051F24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F175BD328FDE2DD00051F24 /* HomeViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F09CEC129193E90004A0423 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		0F175BCC28FDE2DD00051F24 /* Yummie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yummie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F175BCF28FDE2DD00051F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F175BD128FDE2DD00051F24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				0F9FAB0628FEF7EB00394FBB /* String+Extension.swift */,
 				0F9D035529008F0700BB3BB0 /* String+.swift */,
 				0F9FAB0E28FF06EF00394FBB /* UIView+.swift */,
+				0F09CEC129193E90004A0423 /* UserDefaults+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				0F2F8FC929017DD2000D4D06 /* DishListTableViewCell.swift in Sources */,
 				0FFD55AF2902CC820078EBDB /* ListOrdersViewController.swift in Sources */,
 				0FCE6B492906E40F00675D07 /* ApiResponse.swift in Sources */,
+				0F09CEC229193E90004A0423 /* UserDefaults+.swift in Sources */,
 				0F2F8FCE290198A4000D4D06 /* DishListViewModel.swift in Sources */,
 				0F9D035429008DB900BB3BB0 /* FullDetailViewModel.swift in Sources */,
 				0F9FAB0728FEF7EB00394FBB /* String+Extension.swift in Sources */,
