@@ -11,4 +11,4 @@ YUMMIE é um aplicativo para você solicitar um pedido ("order") de comida.
 ##### UserDefaults;
 
 ## Demonstração
-https://user-images.githubusercontent.com/102806228/190655711-ba98024a-228f-4bcc-9de2-0c11c0c49ab1.mp4
+https://user-images.githubusercontent.com/102806228/200328080-a03e51a6-74b1-415c-b71c-5a2d07296900.mp4
