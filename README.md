@@ -2,7 +2,7 @@
 YUMMIE é um aplicativo para você solicitar um pedido ("order") de comida.
 
 ## Principais skills para o desenvolvimento do app:
-#### ViewCode;
+##### ViewCode;
 ### Requisição API's;
 ### Arquitetura MVC+MVVM
 ### UITableView;
